@@ -42,9 +42,17 @@
 
     nav{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:12px}
 
-    .logo{display:flex;align-items:center;gap:12px;cursor:pointer}
-    .logo img{height:40px;width:auto;object-fit:contain}
-    .logo-title{font-family:'Poppins',sans-serif;font-size:1.1rem;color:var(--text);white-space:nowrap}
+    /* LOGO — image only, crisp & borderless */
+    .logo{
+      display:inline-flex;align-items:center;cursor:pointer;
+      text-decoration:none;border:0;background:transparent;padding:4px 0;
+    }
+    .logo:focus-visible{outline:3px solid rgba(255,108,108,0.18);outline-offset:3px}
+    .logo img{
+      height:44px;width:auto;object-fit:contain;image-rendering:auto;
+      transition:opacity .2s ease;
+    }
+    .logo img:hover{opacity:.92}
 
     /* nav links */
     .nav-links{display:flex;gap:28px;list-style:none;align-items:center}
@@ -127,6 +135,10 @@
     .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
     .footer h4{color:var(--accent-2);margin-bottom:10px}
     .footer p,a{color:rgba(230,238,248,0.86);text-decoration:none}
+    /* footer logo only */
+    .footer-logo{display:inline-flex;align-items:center;margin-bottom:12px}
+    .footer-logo img{height:38px;width:auto;transition:opacity .2s ease}
+    .footer-logo img:hover{opacity:.92}
 
     /* Sticky mobile CTA */
     .sticky-cta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:70;background:rgba(255,255,255,.95);backdrop-filter:saturate(140%) blur(8px);border-top:1px solid rgba(15,23,42,0.06);padding:10px 16px}
@@ -160,10 +172,11 @@
       .gallery-grid{grid-template-columns:1fr}
       .footer-grid{grid-template-columns:1fr 1fr}
       .sticky-cta{display:block}
+      .footer-logo img{height:32px}
     }
     @media (max-width:480px){
-      .logo-title{display:none} /* keep the logo clean on very small screens */
       .section{padding:60px 0}
+      .footer-logo img{height:30px}
     }
 
     /* accessibility + motion */
@@ -181,11 +194,10 @@
   <header id="header">
     <div class="container">
       <nav>
-        <button class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Home">
-          <!-- Use your generated logo; supply a 2x if you have one -->
+        <!-- Logo only (with retina source) -->
+        <a href="#home" class="logo" aria-label="Home">
           <img src="logo.png" srcset="logo.png 1x, logo@2x.png 2x" alt="TheNailBar logo">
-          <span class="logo-title">TheNailBar</span>
-        </button>
+        </a>
 
         <ul class="nav-links" role="menubar" aria-label="Main navigation">
           <li><a href="#home" class="active">Home</a></li>
@@ -406,9 +418,8 @@
     <div class="container footer">
       <div class="footer-grid">
         <div>
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-            <img src="logo.png" alt="TheNailBar logo" style="height:32px;width:auto">
-            <strong>TheNailBar</strong>
+          <div class="footer-logo">
+            <img src="logo.png" srcset="logo.png 1x, logo@2x.png 2x" alt="TheNailBar logo">
           </div>
           <p>Gqeberha's luxury nail destination. Where every detail matters and beauty is redefined.</p>
         </div>
