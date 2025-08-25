@@ -34,17 +34,16 @@
     /* header (Safari-friendly blur + composite) */
     header{
       position:sticky;left:0;right:0;top:0;z-index:60;
-      background:rgba(255,255,255,0.85); /* fallback */
+      background:rgba(255,255,255,0.85);
       background:linear-gradient(180deg,rgba(255,255,255,0.85),rgba(255,255,255,0.70));
       backdrop-filter:blur(6px);
-      -webkit-backdrop-filter:blur(6px); /* Safari */
+      -webkit-backdrop-filter:blur(6px);
       border-bottom:1px solid rgba(15,23,42,0.06);
       transition:all .35s ease;
-      transform:translateZ(0); /* Safari composite fix */
+      transform:translateZ(0);
     }
     header.scrolled{box-shadow:var(--shadow-1);background:rgba(255,255,255,0.95)}
 
-    /* No-blur fallback if unsupported */
     @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
       header{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(255,255,255,0.95)}
     }
@@ -107,7 +106,7 @@
     .section-title{font-size:clamp(1.6rem,4vw,2rem);margin-top:8px;font-weight:800}
     .section-description{color:var(--muted);max-width:680px;margin:12px auto}
 
-    /* ===== New Services & Pricing ===== */
+    /* ===== Services & Pricing ===== */
     .pricing-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -122,9 +121,7 @@
       transition:transform .22s ease,box-shadow .22s ease
     }
     .pricing-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-2)}
-    .pricing-head{
-      display:flex;align-items:center;justify-content:space-between;margin-bottom:12px
-    }
+    .pricing-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
     .pricing-title{font-weight:800}
     .pricing-badge{
       padding:6px 12px;border-radius:999px;
@@ -168,7 +165,6 @@
     .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
     .footer h4{color:var(--accent-2);margin-bottom:10px}
     .footer p,a{color:rgba(230,238,248,0.86);text-decoration:none}
-    /* footer logo only */
     .footer-logo{display:inline-flex;align-items:center;margin-bottom:12px}
     .footer-logo img{height:38px;width:auto;transition:opacity .2s ease}
     .footer-logo img:hover{opacity:.92}
@@ -296,7 +292,7 @@
       </div>
     </section>
 
-    <!-- Services (Updated) -->
+    <!-- Services (Updated + Marggie) -->
     <section id="services">
       <div class="container">
         <div class="section-header">
@@ -306,68 +302,126 @@
         </div>
 
         <div class="pricing-grid">
-
-          <!-- Acrylic or Gel Tips -->
+          <!-- Your original pricing -->
           <div class="pricing-card">
             <div class="pricing-head">
               <h4 class="pricing-title">Acrylic or Gel Tips</h4>
               <span class="pricing-badge">From R350</span>
             </div>
             <div class="price-list" role="list">
-              <div class="price-item" role="listitem">
-                <span class="price-name">Colour or Ombré</span>
-                <span class="price-amount">R450</span>
-              </div>
-              <div class="price-item" role="listitem">
-                <span class="price-name">Clear or French</span>
-                <span class="price-amount">R420</span>
-              </div>
-              <div class="price-item" role="listitem">
-                <span class="price-name">Refills</span>
-                <span class="price-amount">R350</span>
-              </div>
+              <div class="price-item" role="listitem"><span class="price-name">Colour or Ombré</span><span class="price-amount">R450</span></div>
+              <div class="price-item" role="listitem"><span class="price-name">Clear or French</span><span class="price-amount">R420</span></div>
+              <div class="price-item" role="listitem"><span class="price-name">Refills</span><span class="price-amount">R350</span></div>
             </div>
           </div>
 
-          <!-- Overlay -->
           <div class="pricing-card">
             <div class="pricing-head">
               <h4 class="pricing-title">Overlay</h4>
               <span class="pricing-badge">All R350</span>
             </div>
             <div class="price-list" role="list">
-              <div class="price-item" role="listitem">
-                <span class="price-name">Colour</span>
-                <span class="price-amount">R350</span>
-              </div>
-              <div class="price-item" role="listitem">
-                <span class="price-name">French or Ombré</span>
-                <span class="price-amount">R350</span>
-              </div>
-              <div class="price-item" role="listitem">
-                <span class="price-name">Clear</span>
-                <span class="price-amount">R350</span>
-              </div>
+              <div class="price-item" role="listitem"><span class="price-name">Colour</span><span class="price-amount">R350</span></div>
+              <div class="price-item" role="listitem"><span class="price-name">French or Ombré</span><span class="price-amount">R350</span></div>
+              <div class="price-item" role="listitem"><span class="price-name">Clear</span><span class="price-amount">R350</span></div>
             </div>
           </div>
 
-          <!-- Manicure -->
           <div class="pricing-card">
             <div class="pricing-head">
               <h4 class="pricing-title">Manicure</h4>
               <span class="pricing-badge">From R40</span>
             </div>
             <div class="price-list" role="list">
-              <div class="price-item" role="listitem">
-                <span class="price-name">Gel Polish</span>
-                <span class="price-amount">R250</span>
-              </div>
-              <div class="price-item" role="listitem">
-                <span class="price-name">Nail Repair</span>
-                <span class="price-amount">R40</span>
-              </div>
+              <div class="price-item" role="listitem"><span class="price-name">Gel Polish</span><span class="price-amount">R250</span></div>
+              <div class="price-item" role="listitem"><span class="price-name">Nail Repair</span><span class="price-amount">R40</span></div>
             </div>
             <p class="price-note">Gift vouchers available • Call/WhatsApp <strong>083&nbsp;325&nbsp;4649</strong></p>
+          </div>
+
+          <!-- NEW: Marggie – Pedicure & Spa -->
+          <div class="pricing-card">
+            <div class="pricing-head">
+              <h4 class="pricing-title">Pedicure &amp; Spa (Marggie)</h4>
+            </div>
+            <div class="price-list">
+              <div class="price-item"><span class="price-name">Deluxe Pedi Gel &amp; Spa</span><span class="price-amount">R390</span></div>
+              <div class="price-item"><span class="price-name">Shorten Toes</span><span class="price-amount">R80</span></div>
+              <div class="price-item"><span class="price-name">Shorten Gel Toes</span><span class="price-amount">R200</span></div>
+              <div class="price-item"><span class="price-name">Chemical Peel (Deluxe)</span><span class="price-amount">R500</span></div>
+            </div>
+          </div>
+
+          <!-- NEW: Wax (Marggie) -->
+          <div class="pricing-card">
+            <div class="pricing-head">
+              <h4 class="pricing-title">Wax (Marggie)</h4>
+            </div>
+            <div class="price-list">
+              <div class="price-item"><span class="price-name">Eyebrows</span><span class="price-amount">R60</span></div>
+              <div class="price-item"><span class="price-name">Upper Lip</span><span class="price-amount">R60</span></div>
+              <div class="price-item"><span class="price-name">Chin</span><span class="price-amount">R80</span></div>
+              <div class="price-item"><span class="price-name">Sides Face</span><span class="price-amount">R80</span></div>
+              <div class="price-item"><span class="price-name">Brows Tint</span><span class="price-amount">R60</span></div>
+              <div class="price-item"><span class="price-name">Lash Tint</span><span class="price-amount">R80</span></div>
+              <div class="price-item"><span class="price-name">Under Arm</span><span class="price-amount">R80</span></div>
+              <div class="price-item"><span class="price-name">Arms to Elbow</span><span class="price-amount">R100</span></div>
+              <div class="price-item"><span class="price-name">Toes Upper Feet</span><span class="price-amount">R60</span></div>
+              <div class="price-item"><span class="price-name">Below Knees</span><span class="price-amount">R130</span></div>
+              <div class="price-item"><span class="price-name">Above Knee</span><span class="price-amount">R160</span></div>
+              <div class="price-item"><span class="price-name">Full Legs</span><span class="price-amount">R220</span></div>
+            </div>
+          </div>
+
+          <!-- NEW: Microblading & Eyeliner PMU (Marggie) -->
+          <div class="pricing-card">
+            <div class="pricing-head">
+              <h4 class="pricing-title">Microblading / Eyeliner PMU (Marggie)</h4>
+            </div>
+            <div class="price-list">
+              <div class="price-item"><span class="price-name">Microblading — 1st Session</span><span class="price-amount">R1000</span></div>
+              <div class="price-item"><span class="price-name">Microblading — 2nd Session</span><span class="price-amount">R800</span></div>
+              <div class="price-item"><span class="price-name">Eyeliner PMU — 1st Session</span><span class="price-amount">R1000</span></div>
+              <div class="price-item"><span class="price-name">Eyeliner PMU — 2nd Session</span><span class="price-amount">R800</span></div>
+            </div>
+          </div>
+
+          <!-- NEW: Lashes (Marggie) -->
+          <div class="pricing-card">
+            <div class="pricing-head">
+              <h4 class="pricing-title">Vogue / Mink Lashes (Marggie)</h4>
+            </div>
+            <div class="price-list">
+              <div class="price-item"><span class="price-name">Lashes Removal</span><span class="price-amount">R100</span></div>
+              <div class="price-item"><span class="price-name">Lashes Fill — Starts At</span><span class="price-amount">R200</span></div>
+              <div class="price-item"><span class="price-name">Lashes Mink</span><span class="price-amount">R450</span></div>
+              <div class="price-item"><span class="price-name">Russian Lashes</span><span class="price-amount">R400</span></div>
+              <div class="price-item"><span class="price-name">Fan Lashes</span><span class="price-amount">R300</span></div>
+            </div>
+          </div>
+
+          <!-- NEW: DPL Laser (Marggie) -->
+          <div class="pricing-card">
+            <div class="pricing-head">
+              <h4 class="pricing-title">DPL Laser (Marggie)</h4>
+              <span class="pricing-badge">Excludes Wax</span>
+            </div>
+            <div class="price-list">
+              <div class="price-item"><span class="price-name">Upper Lip</span><span class="price-amount">R200</span></div>
+              <div class="price-item"><span class="price-name">Sideburns &amp; Jawline Chin</span><span class="price-amount">R400</span></div>
+              <div class="price-item"><span class="price-name">Lip &amp; Chin</span><span class="price-amount">R450</span></div>
+              <div class="price-item"><span class="price-name">Underarm</span><span class="price-amount">R500</span></div>
+              <div class="price-item"><span class="price-name">Arm (1st Half)</span><span class="price-amount">R600</span></div>
+              <div class="price-item"><span class="price-name">Top</span><span class="price-amount">R600</span></div>
+              <div class="price-item"><span class="price-name">Bikini Sides</span><span class="price-amount">R500</span></div>
+              <div class="price-item"><span class="price-name">Full Bikini</span><span class="price-amount">R800</span></div>
+              <div class="price-item"><span class="price-name">Full Back</span><span class="price-amount">R1200</span></div>
+              <div class="price-item"><span class="price-name">Chest</span><span class="price-amount">R900</span></div>
+              <div class="price-item"><span class="price-name">Half Leg (Both)</span><span class="price-amount">R1000</span></div>
+              <div class="price-item"><span class="price-name">Full (Both)</span><span class="price-amount">R1700</span></div>
+              <div class="price-item"><span class="price-name">Toes &amp; Foot</span><span class="price-amount">R200</span></div>
+            </div>
+            <p class="price-note">DPL Skin Rejuvenation: <strong>R30 per shot</strong> • DPL Full Face: <strong>R450</strong> • DPL Lip &amp; Chin: <strong>R30</strong></p>
           </div>
 
         </div>
@@ -408,7 +462,7 @@
             <p>Founded with a passion for perfection, we've created a space where modern techniques blend seamlessly with timeless elegance. Our team of certified nail artists are dedicated to transforming your nails into works of art.</p>
             <div class="stats">
               <div class="stat"><div class="num">1000+</div><div class="label">Happy Clients</div></div>
-              <div class="stat"><div class="num">100%</</div><div class="label">Satisfaction</div></div>
+              <div class="stat"><div class="num">100%</div><div class="label">Satisfaction</div></div>
             </div>
           </div>
         </div>
@@ -430,10 +484,12 @@
               <div class="form-group"><label for="name">Your Name</label><input id="name" name="name" required></div>
               <div class="form-group"><label for="phone">Phone Number</label><input id="phone" name="phone" type="tel" inputmode="tel" required></div>
               <div class="form-group"><label for="email">Email</label><input id="email" name="email" type="email" required></div>
+
               <div class="form-group">
                 <label for="service">Service</label>
                 <select id="service" name="service">
                   <option value="">Select a service</option>
+                  <!-- Original -->
                   <option>Acrylic/Gel Tips — Colour or Ombré (R450)</option>
                   <option>Acrylic/Gel Tips — Clear or French (R420)</option>
                   <option>Acrylic/Gel Tips — Refills (R350)</option>
@@ -442,8 +498,48 @@
                   <option>Overlay — Clear (R350)</option>
                   <option>Manicure — Gel Polish (R250)</option>
                   <option>Manicure — Nail Repair (R40)</option>
+                  <!-- Marggie -->
+                  <option>Deluxe Pedi Gel & Spa (R390)</option>
+                  <option>Shorten Toes (R80)</option>
+                  <option>Shorten Gel Toes (R200)</option>
+                  <option>Chemical Peel (Deluxe) (R500)</option>
+                  <option>Wax — Eyebrows (R60)</option>
+                  <option>Wax — Upper Lip (R60)</option>
+                  <option>Wax — Chin (R80)</option>
+                  <option>Wax — Sides Face (R80)</option>
+                  <option>Brows Tint (R60)</option>
+                  <option>Lash Tint (R80)</option>
+                  <option>Wax — Under Arm (R80)</option>
+                  <option>Wax — Arms to Elbow (R100)</option>
+                  <option>Wax — Toes Upper Feet (R60)</option>
+                  <option>Wax — Below Knees (R130)</option>
+                  <option>Wax — Above Knee (R160)</option>
+                  <option>Wax — Full Legs (R220)</option>
+                  <option>Microblading — 1st Session (R1000)</option>
+                  <option>Microblading — 2nd Session (R800)</option>
+                  <option>Eyeliner PMU — 1st Session (R1000)</option>
+                  <option>Eyeliner PMU — 2nd Session (R800)</option>
+                  <option>Lashes Removal (R100)</option>
+                  <option>Lashes Fill — Starts At (R200)</option>
+                  <option>Lashes Mink (R450)</option>
+                  <option>Russian Lashes (R400)</option>
+                  <option>Fan Lashes (R300)</option>
+                  <option>DPL Laser — Upper Lip (R200)</option>
+                  <option>DPL Laser — Sideburns & Jawline Chin (R400)</option>
+                  <option>DPL Laser — Lip & Chin (R450)</option>
+                  <option>DPL Laser — Underarm (R500)</option>
+                  <option>DPL Laser — Arm 1st Half (R600)</option>
+                  <option>DPL Laser — Top (R600)</option>
+                  <option>DPL Laser — Bikini Sides (R500)</option>
+                  <option>DPL Laser — Full Bikini (R800)</option>
+                  <option>DPL Laser — Full Back (R1200)</option>
+                  <option>DPL Laser — Chest (R900)</option>
+                  <option>DPL Laser — Half Leg Both (R1000)</option>
+                  <option>DPL Laser — Full Both (R1700)</option>
+                  <option>DPL Laser — Toes & Foot (R200)</option>
                 </select>
               </div>
+
               <div class="form-group"><label for="message">Message</label><textarea id="message" name="message" rows="4" placeholder="Preferred date & time…"></textarea></div>
               <button type="submit" class="submit-btn">Book Appointment</button>
             </form>
@@ -456,16 +552,11 @@
                 <div>
                   <h4 style="margin:0 0 6px 0">Visit Our Salon</h4>
                   <p style="margin:0;color:var(--muted)">
-                    <a href="https://maps.app.goo.gl/MJNpw3HuchjHUe3Q9" 
-                       target="_blank" 
-                       rel="noopener" 
-                       style="color:inherit; text-decoration:none; display:flex; align-items:center; gap:6px;">
-                    <span style="font-size:18px;">📍</span>
-                    <span>
-                      Moffett on Main<br>Gqeberha, Eastern Cape
-                    </span>
-                   </a>
-                 </p>
+                    <a href="https://maps.app.goo.gl/MJNpw3HuchjHUe3Q9" target="_blank" rel="noopener" style="color:inherit; text-decoration:none; display:flex; align-items:center; gap:6px;">
+                      <span style="font-size:18px;">📍</span>
+                      <span>Moffett on Main<br>Gqeberha, Eastern Cape</span>
+                    </a>
+                  </p>
                 </div>
               </div>
             </div>
@@ -523,13 +614,14 @@
           <p>Acrylic/Gel Tips</p>
           <p>Overlay</p>
           <p>Manicure</p>
+          <p>Pedicure & Spa</p>
+          <p>Wax • Microblading • Lashes</p>
+          <p>DPL Laser</p>
         </div>
 
         <div>
           <h4>Connect With Us</h4>
-<!--          <p>Instagram: @thenailbar_gqeberha</p>  -->
           <p>WhatsApp: 083&nbsp;325&nbsp;4649</p>
-<!--          <p>Email: hello@thenailbar.co.za</p>   -->
         </div>
       </div>
 
