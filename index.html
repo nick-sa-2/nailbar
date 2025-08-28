@@ -213,6 +213,21 @@
     @media (prefers-reduced-motion:reduce){
       *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
     }
+    /* tiny logo next to "Services & Pricing" */
+    .section-title{
+    display:inline-flex;
+    align-items:center;
+    gap:.5ch; /* space between text and icon */
+    }
+    .title-icon{
+    height:1.25em;   /* scales with font size */
+    width:auto;
+    margin-top:.05em; /* subtle optical alignment */
+    opacity:.9;       /* optional, matches your aesthetic */
+    }
+    @media (max-width:780px){
+    .title-icon{ height:1.1em; }
+    }
   </style>
 </head>
 <body>
@@ -297,7 +312,15 @@
       <div class="container">
         <div class="section-header">
           <p class="section-subtitle">What We Offer</p>
-          <h3 class="section-title">Services &amp; Pricing</h3>
+          <h3 class="section-title">
+             Services &amp; Pricing
+             <img
+             src="brush.png"
+             srcset="brush.png 1x, brush@2x.png 2x"
+             alt=""
+             class="title-icon"
+             aria-hidden="true">
+          </h3>
           <p class="section-description">A clear, modern menu of our most popular treatments. Prices are in ZAR.</p>
         </div>
 
