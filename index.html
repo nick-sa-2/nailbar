@@ -109,11 +109,12 @@
     /* ===== Services & Pricing ===== */
     .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
     margin-top: 28px;
-    justify-content: center; /* pushes last row to the middle */
+    justify-content: center; /* <-- centers the last row */
     }
+
     .pricing-card{
       background:var(--surface);
       border-radius:18px;
@@ -232,7 +233,7 @@
     /* Image used inside pricing cards + intensity */
 :root{
   --card-art: url("edge-texture.webp");  /* put your image next to index.html */
-  --card-art-opacity: .25;               /* ~15% opacity */
+  --card-art-opacity: .35;               /* ~35% opacity */
 }
 
 /* make cards able to hold a background layer */
@@ -255,7 +256,7 @@
   opacity: var(--card-art-opacity);
   mix-blend-mode: multiply;   /* keeps it gentle; try 'soft-light' if you prefer */
   /* Optional: keep the center a touch clearer */
-  /* mask-image: radial-gradient(120% 110% at 50% 45%, black 55%, transparent 100%); */
+  mask-image: radial-gradient(120% 110% at 50% 45%, black 55%, transparent 100%);
 }
 
 /* ensure all real content sits above the art */
