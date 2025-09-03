@@ -11,25 +11,27 @@
 
   <style>
     /* ===== Palette tuned to artwork (orchid + soft gold) ===== */
-    :root{
-      --bg:#fbfaf9;
-      --surface:#ffffff;
-      --muted:#6b7280;
-      --text:#0f172a;
+:root{
+  /* neutrals */
+  --bg:#f7f5f6;        /* soft warm off-white */
+  --surface:#ffffff;
+  --text:#10131e;      /* deep blue/grey for high contrast */
+  --muted:#6d7383;     /* cooler muted body copy */
 
-      --accent:#b873d8;   /* orchid – primary brand */
-      --accent-2:#f0a14a; /* soft gold – sparingly used highlights */
+  /* warm ember palette */
+  --accent:#e65a4f;    /* burnt orangey-pink (primary) */
+  --accent-2:#c43a3f;  /* warm red accent */
+  --accent-ink:#1b2230;/* inky slate for strong text/overlays */
 
-      --glass:rgba(255,255,255,0.6);
-      --shadow-1:0 8px 30px rgba(15,23,42,0.08);
-      --shadow-2:0 18px 60px rgba(15,23,42,0.10);
-      --radius-lg:24px;--radius-md:14px;--max-width:1200px;
+  /* rgb helpers (keep names for compatibility with your gradients) */
+  --accent-rgb: 230 90 79;   /* rgb() of --accent */
+  --gold-rgb:   196 58 63;   /* repurposed as the red accent rgb */
 
-      /* Card artwork overlay */
-      --card-art: url("edge-texture.webp");
-      --card-art-opacity:.35;  /* tweak this to taste (0.15–0.55) */
-    }
-
+  --glass:rgba(255,255,255,0.6);
+  --shadow-1:0 8px 30px rgba(15,23,42,0.08);
+  --shadow-2:0 18px 60px rgba(15,23,42,0.10);
+  --radius-lg:24px;--radius-md:14px;--max-width:1200px;
+}
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
     body{
