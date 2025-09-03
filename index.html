@@ -228,6 +228,42 @@
     @media (max-width:780px){
     .title-icon{ height:1.1em; }
     }
+    /* Image used inside pricing cards + intensity */
+:root{
+  --card-art: url("edge-texture.webp");  /* put your image next to index.html */
+  --card-art-opacity: .15;               /* ~15% opacity */
+}
+
+/* make cards able to hold a background layer */
+.pricing-card{
+  position: relative;
+  overflow: hidden;           /* clip the image to the rounded corners */
+}
+
+/* subtle art layer behind the text */
+.pricing-card::before{
+  content: "";
+  position: absolute; inset: 0;
+  z-index: 0;                 /* behind the content */
+  border-radius: inherit;
+  pointer-events: none;
+
+  background-image: var(--card-art);
+  background-size: cover;
+  background-position: center;
+  opacity: var(--card-art-opacity);
+  mix-blend-mode: multiply;   /* keeps it gentle; try 'soft-light' if you prefer */
+  /* Optional: keep the center a touch clearer */
+  /* mask-image: radial-gradient(120% 110% at 50% 45%, black 55%, transparent 100%); */
+}
+
+/* ensure all real content sits above the art */
+.pricing-card > *{
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
   </style>
 </head>
 <body>
