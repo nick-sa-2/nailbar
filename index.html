@@ -107,11 +107,12 @@
     .section-description{color:var(--muted);max-width:680px;margin:12px auto}
 
     /* ===== Services & Pricing ===== */
-    .pricing-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
-      margin-top:28px
+    .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 28px;
+    justify-content: center; /* pushes last row to the middle */
     }
     .pricing-card{
       background:var(--surface);
@@ -231,7 +232,7 @@
     /* Image used inside pricing cards + intensity */
 :root{
   --card-art: url("edge-texture.webp");  /* put your image next to index.html */
-  --card-art-opacity: .15;               /* ~15% opacity */
+  --card-art-opacity: .25;               /* ~15% opacity */
 }
 
 /* make cards able to hold a background layer */
