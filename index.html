@@ -25,6 +25,7 @@
       --shadow-1:0 8px 30px rgba(15,23,42,0.08);
       --shadow-2:0 18px 60px rgba(15,23,42,0.10);
       --radius-lg:24px;--radius-md:14px;--max-width:1200px;
+      --header-h:72px;            /* keep header math in one place */
 
       /* Card artwork overlay */
       --card-art: url("edge-texture.webp");
@@ -38,24 +39,28 @@
       background:var(--bg); color:var(--text);
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
       overflow-x:hidden; line-height:1.5;
+      /* Make room for fixed header so content never hides beneath it */
+      padding-top: var(--header-h);
     }
     img{max-width:100%; display:block}
 
     .container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
 
-    /* ===== Header ===== */
+    /* ===== Header (fixed so it never disappears) ===== */
     header{
-      position:sticky;left:0;right:0;top:0;z-index:60;
-      background:linear-gradient(180deg,rgba(255,255,255,0.85),rgba(255,255,255,0.70));
+      position:fixed;left:0;right:0;top:0;z-index:1000;
+      background:linear-gradient(180deg,rgba(255,255,255,0.92),rgba(255,255,255,0.82));
       backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
       border-bottom:1px solid rgba(15,23,42,0.06);
-      transition:all .35s ease; transform:translateZ(0);
+      transition:box-shadow .25s ease, background .25s ease; transform:translateZ(0);
+      height:var(--header-h);
+      display:flex;align-items:center;
     }
-    header.scrolled{box-shadow:var(--shadow-1);background:rgba(255,255,255,0.95)}
+    header.scrolled{box-shadow:var(--shadow-1);background:rgba(255,255,255,0.96)}
     @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
-      header{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(255,255,255,0.95)}
+      header{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(255,255,255,0.96)}
     }
-    nav{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:12px}
+    nav{display:flex;align-items:center;justify-content:space-between;width:100%;gap:12px}
 
     /* Logo */
     .logo{display:inline-flex;align-items:center;cursor:pointer;text-decoration:none;border:0;background:transparent;padding:4px 0}
@@ -77,7 +82,10 @@
     .btn-outline{padding:10px 18px;border-radius:999px;border:1px solid rgba(15,23,42,0.10);background:transparent;color:var(--text);font-weight:700}
 
     .mobile-toggle{display:none;border:0;background:transparent;font-size:26px;cursor:pointer;line-height:1;padding:10px}
-    .mobile-drawer{display:none;position:fixed;inset:auto 0 0 0;top:72px;background:var(--surface);box-shadow:0 -12px 40px rgba(15,23,42,.12);padding:16px 20px;border-radius:18px 18px 0 0}
+    .mobile-drawer{
+      display:none;position:fixed;left:0;right:0;top:var(--header-h);
+      background:var(--surface);box-shadow:0 -12px 40px rgba(15,23,42,.12);padding:16px 20px;border-radius:18px 18px 0 0;z-index:999
+    }
     .mobile-drawer ul{list-style:none;display:flex;flex-direction:column;gap:10px}
     .mobile-drawer a{padding:14px 10px;border-radius:12px;background:rgba(15,23,42,0.03);text-decoration:none;color:var(--text);font-weight:700}
 
@@ -113,6 +121,8 @@
 
     /* ===== Sections ===== */
     section{padding:80px 0}
+    /* Make anchor jumps stop below the fixed header */
+    section{scroll-margin-top: calc(var(--header-h) + 12px);}
     .section-header{text-align:center;margin-bottom:28px}
     .section-subtitle{color:var(--accent);font-weight:800;letter-spacing:1.5px;font-size:.9rem;text-transform:uppercase}
     .section-title{font-size:clamp(1.6rem,4vw,2rem);margin-top:8px;font-weight:800}
@@ -200,7 +210,7 @@
     .footer h4{color:var(--accent)}
     .footer a{color:rgba(230,238,248,.88);text-decoration-color:transparent}
     .footer a:hover{
-      color:#e78a62; /* light burnt orange */
+      color:#e78a62;
       text-decoration:underline;
       text-decoration-thickness:2px;
       text-underline-offset:3px;
@@ -235,6 +245,7 @@
       }
     }
     @media (max-width:780px){
+      :root{ --header-h:64px; } /* slightly shorter header on mobile */
       .nav-links{display:none}
       .mobile-toggle{display:block}
       .logo img{height:36px}
@@ -680,7 +691,7 @@
 
     // header scrolled state
     const header = document.getElementById('header');
-    const onHeader = ()=>{ if(window.scrollY>60) header.classList.add('scrolled'); else header.classList.remove('scrolled'); };
+    const onHeader = ()=>{ if(window.scrollY>2) header.classList.add('scrolled'); else header.classList.remove('scrolled'); };
     window.addEventListener('scroll', onHeader); onHeader();
 
     // mobile menu toggle (drawer)
@@ -698,20 +709,28 @@
     const links = document.querySelectorAll('.nav-links a');
     function onScroll(){
       let cur = '';
-      sections.forEach(s=>{const top = s.offsetTop - 120; if(window.scrollY>=top) cur = s.id});
+      sections.forEach(s=>{
+        const top = s.offsetTop - (header.offsetHeight + 20);
+        if(window.scrollY>=top) cur = s.id
+      });
       links.forEach(l=>{l.classList.toggle('active', l.getAttribute('href') === `#${cur}`)});
     }
     window.addEventListener('scroll', onScroll);
     onScroll();
 
-    // smooth scrolling for internal links
+    // smooth scrolling for internal links (accounts for fixed header height)
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', e=>{
         const href = a.getAttribute('href');
-        if(href.length>1){
+        if(href && href.length>1){
           e.preventDefault();
           const target = document.querySelector(href);
-          if(target) window.scrollTo({top:target.offsetTop-72,behavior:'smooth'});
+          if(target){
+            const headerH = header.offsetHeight || 72;
+            const y = target.getBoundingClientRect().top + window.pageYOffset - (headerH + 8);
+            window.scrollTo({top:y,behavior:'smooth'});
+          }
+          // close mobile drawer after navigation
           if(window.innerWidth<780){
             mobileMenu.setAttribute('hidden',''); mobileMenu.style.display='none';
             mobileToggle.setAttribute('aria-expanded','false');
