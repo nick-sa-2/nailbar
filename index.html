@@ -228,6 +228,38 @@
     @media (max-width:780px){
     .title-icon{ height:1.1em; }
     }
+    /* Edge texture frame */
+:root{
+  --edge-img:url(edge-texture.webp"); /* <-- path to your image */
+  --edge-opacity:0.28;   /* desktop intensity */
+  --edge-opacity-m:0.20; /* mobile intensity */
+}
+
+body::before{
+  content:"";
+  position:fixed; inset:0; z-index:0;    /* behind everything */
+  pointer-events:none;                    /* never blocks clicks */
+  background-image: var(--edge-img);
+  background-size: cover;
+  background-position: center;
+  opacity: var(--edge-opacity);
+  /* Fade the center so the art “hugs” the edges */
+  -webkit-mask-image: radial-gradient(120% 85% at 50% 50%, transparent 40%, black 70%);
+          mask-image: radial-gradient(120% 85% at 50% 50%, transparent 40%, black 70%);
+  /* Optional: make colors sit nicely with page */
+  mix-blend-mode: multiply; /* try 'overlay' or 'soft-light' if you prefer */
+}
+
+/* Keep all real content above the overlay */
+header, main, footer, .loader, .sticky-cta { position: relative; z-index: 1; }
+
+/* Tweak intensity on small screens */
+@media (max-width: 780px){
+  body::before{ opacity: var(--edge-opacity-m); 
+    -webkit-mask-image: radial-gradient(140% 100% at 50% 50%, transparent 35%, black 65%);
+            mask-image: radial-gradient(140% 100% at 50% 50%, transparent 35%, black 65%);
+  }
+}
   </style>
 </head>
 <body>
