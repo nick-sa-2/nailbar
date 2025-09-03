@@ -17,13 +17,6 @@
       --shadow-1:0 8px 30px rgba(15,23,42,0.08);
       --shadow-2:0 18px 60px rgba(15,23,42,0.10);
       --radius-lg:24px;--radius-md:14px;--max-width:1200px;
-
-      /* Edge-frame assets + tuning */
-      --edge-img: url("edge-texture.webp");     /* your abstract wallpaper */
-      --edge-opacity: 0.42;                     /* desktop intensity */
-      --edge-opacity-m: 0.30;                   /* mobile intensity */
-      --tint-coral: #ff6b6b;                    /* bias toward brand coral */
-      --tint-pink:  #f4a7c3;                    /* soft pink companion */
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
@@ -220,68 +213,20 @@
     @media (prefers-reduced-motion:reduce){
       *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
     }
-
     /* tiny logo next to "Services & Pricing" */
     .section-title{
-      display:inline-flex;align-items:center;gap:.5ch;
+    display:inline-flex;
+    align-items:center;
+    gap:.5ch; /* space between text and icon */
     }
     .title-icon{
-      height:1.25em;width:auto;margin-top:.05em;opacity:.9;
+    height:1.25em;   /* scales with font size */
+    width:auto;
+    margin-top:.05em; /* subtle optical alignment */
+    opacity:.9;       /* optional, matches your aesthetic */
     }
-    @media (max-width:780px){ .title-icon{ height:1.1em; } }
-
-    /* ================================
-       Edge texture frame (stronger + coral/pink bias) 
-       ================================ */
-    /* Texture layer */
-    body::before{
-      content:"";
-      position:fixed; inset:0; z-index:0;
-      pointer-events:none;
-      background-image: var(--edge-img);
-      background-size: cover;
-      background-position: center;
-      opacity: var(--edge-opacity);
-
-      /* Show more art near edges; keep center clear for readability */
-      -webkit-mask-image: radial-gradient(120% 85% at 50% 50%, transparent 32%, black 78%);
-              mask-image: radial-gradient(120% 85% at 50% 50%, transparent 32%, black 78%);
-
-      /* Bold but tasteful color interaction */
-      mix-blend-mode: overlay;                /* try 'soft-light' if too vivid */
-      filter: contrast(1.06) saturate(1.10);
-    }
-
-    /* Vignette + warm tint layer (coral/pink bias) */
-    body::after{
-      content:"";
-      position:fixed; inset:0; z-index:0;
-      pointer-events:none;
-
-      /* Two stacked gradients: a subtle warm tint + a vignette */
-      background-image:
-        linear-gradient(115deg, color-mix(in srgb, var(--tint-coral) 30%, transparent), color-mix(in srgb, var(--tint-pink) 22%, transparent)),
-        radial-gradient(120% 95% at 50% 50%, transparent 60%, rgba(0,0,0,.08) 100%);
-
-      mix-blend-mode: soft-light;  /* warms without crushing contrast */
-    }
-
-    /* Keep real content above overlays */
-    header, main, footer, .loader, .sticky-cta { position: relative; z-index: 1; }
-
-    /* Mobile tuning */
     @media (max-width:780px){
-      body::before{
-        opacity: var(--edge-opacity-m);
-        -webkit-mask-image: radial-gradient(140% 100% at 50% 50%, transparent 30%, black 75%);
-                mask-image: radial-gradient(140% 100% at 50% 50%, transparent 30%, black 75%);
-        filter: contrast(1.04) saturate(1.06);
-      }
-      body::after{
-        background-image:
-          linear-gradient(120deg, color-mix(in srgb, var(--tint-coral) 24%, transparent), color-mix(in srgb, var(--tint-pink) 18%, transparent)),
-          radial-gradient(140% 110% at 50% 50%, transparent 58%, rgba(0,0,0,.06) 100%);
-      }
+    .title-icon{ height:1.1em; }
     }
   </style>
 </head>
