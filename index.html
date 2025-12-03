@@ -10,6 +10,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
 
   <style>
+    /* === About Section Zoom Image === */
+.about-image {
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.about-image .zoom-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transform-origin: center center;
+}
+
+/* Animation only when class added */
+.zoom-image.play-zoom {
+  animation: zoomInOnce 18s ease-out forwards;
+}
+
+@keyframes zoomInOnce {
+  from { transform: scale(1); }
+  to   { transform: scale(1.12); }
+}
     /* ===== Palette: deep burnt orange + ember red + blue-grey ===== */
     :root{
       --bg:#fff8f5;
@@ -515,7 +538,7 @@
       <div class="container">
         <div class="about-grid">
           <div class="about-image" aria-hidden="true">
-            <img src="salon.jpg" width="1000" height="800" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:18px;">
+            <img src="salon.jpg" class="zoom-image" alt="Salon Interior">
           </div>
           <div>
             <p class="section-subtitle">Our Story</p>
@@ -692,5 +715,25 @@
     const toggleSticky = ()=>{ sticky.style.display = (window.scrollY>320 && window.innerWidth<780) ? 'block' : 'none'; };
     window.addEventListener('scroll', toggleSticky); window.addEventListener('resize', toggleSticky); toggleSticky();
   </script>
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const zoomImg = document.querySelector('.zoom-image');
+  if (!zoomImg || !('IntersectionObserver' in window)) {
+    if (zoomImg) zoomImg.classList.add('play-zoom');
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        zoomImg.classList.add('play-zoom');
+        obs.unobserve(zoomImg);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(zoomImg);
+});
+</script>
 </body>
 </html>
