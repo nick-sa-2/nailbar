@@ -10,6 +10,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
 
   <style>
+    /* === HERO IMAGE ZOOM === */
+.art-card {
+  overflow: hidden; /* hide edges while zooming */
+}
+
+.zoom-image-hero {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transform-origin: center;
+}
+
+/* When class added, start animation once */
+.zoom-image-hero.play-zoom {
+  animation: heroZoomOnce 22s ease-out forwards;
+}
+
+@keyframes heroZoomOnce {
+  from { transform: scale(1); }
+  to   { transform: scale(1.10); } /* ~10% zoom, subtle */
+}
+
     /* === About Section Zoom Image === */
 .about-image {
   overflow: hidden;
@@ -378,7 +401,7 @@
 
           <div class="hero-art" aria-hidden="true">
             <div class="art-card">
-              <img src="nail.webp" width="1040" height="832" alt="" loading="lazy" onerror="this.style.opacity=.12">
+              <img src="nail.webp" class="zoom-image-hero" alt="Nail Art">
               <div class="label">Handcrafted finishes • Premium products</div>
             </div>
           </div>
@@ -733,6 +756,38 @@ document.addEventListener('DOMContentLoaded', function () {
   }, { threshold: 0.5 });
 
   observer.observe(zoomImg);
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  function setupZoom(selector) {
+    const img = document.querySelector(selector);
+    if (!img) return;
+
+    if (!('IntersectionObserver' in window)) {
+      img.classList.add('play-zoom');
+      return;
+    }
+
+    const obs = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          img.classList.add('play-zoom');
+          observer.unobserve(img);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    obs.observe(img);
+  }
+
+  // About section image
+  setupZoom('.zoom-image');
+
+  // Hero section image
+  setupZoom('.zoom-image-hero');
+
 });
 </script>
 </body>
