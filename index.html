@@ -10,6 +10,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
 
   <style>
+    /* ===== Logo dark-mode swap (safe method) ===== */
+.logo {
+  position: relative;
+}
+
+.logo img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Default: light logo visible */
+.logo-dark {
+  display: none;
+}
+
+/* Dark mode: swap logos */
+@media (prefers-color-scheme: dark) {
+  .logo-light {
+    display: none;
+  }
+  .logo-dark {
+    display: block;
+  }
+}
+
+/* Mobile size */
+@media (max-width: 780px) {
+  .logo img {
+    height: 36px;
+  }
+}
     /* === HERO IMAGE ZOOM === */
 .art-card {
   overflow: hidden; /* hide edges while zooming */
@@ -342,11 +374,21 @@
     <div class="container">
       <nav>
         <a href="#home" class="logo" aria-label="Home">
+        <!-- Light mode logo -->
           <img
-            src="logo.png"
-            srcset="logo.png 1x, logo@2x.png 2x"
-            alt="The logo"
+            src="logo-light.png"
+            alt="The Nail Bar logo"
+            class="logo-light"
             fetchpriority="high"
+            loading="eager"
+            decoding="sync">
+
+        <!-- Dark mode logo -->
+          <img
+            src="logo-dark.png"
+            alt=""
+            class="logo-dark"
+            aria-hidden="true"
             loading="eager"
             decoding="sync">
         </a>
