@@ -374,6 +374,18 @@
     .section-title{display:inline-flex;align-items:center;gap:.5ch}
     .title-icon{height:1.25em;width:auto;margin-top:.05em;opacity:.92}
     @media (max-width:780px){ .title-icon{height:1.1em} }
+    /* ===== FINAL dark-mode header override (must be LAST) ===== */
+@media (prefers-color-scheme: dark) {
+  header,
+  header.scrolled {
+    background: linear-gradient(
+      180deg,
+      rgba(15,23,42,0.96),
+      rgba(15,23,42,0.92)
+    ) !important;
+    border-bottom-color: rgba(255,255,255,0.08);
+  }
+}
   </style>
 </head>
 <body>
