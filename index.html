@@ -10,49 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
 
   <style>
-    /* Dark mode header background */
-@media (prefers-color-scheme: dark) {
-  header {
-    background: linear-gradient(
-      180deg,
-      rgba(15,23,42,0.96),
-      rgba(15,23,42,0.92)
-    );
-    border-bottom-color: rgba(255,255,255,0.08);
-  }
-}
-    /* ===== Logo dark-mode swap (safe method) ===== */
-.logo {
-  position: relative;
-}
-
-.logo img {
-  height: 48px;
-  width: auto;
-  object-fit: contain;
-}
-
-/* Default: light logo visible */
-.logo-dark {
-  display: none;
-}
-
-/* Dark mode: swap logos */
-@media (prefers-color-scheme: dark) {
-  .logo-light {
-    display: none;
-  }
-  .logo-dark {
-    display: block;
-  }
-}
-
-/* Mobile size */
-@media (max-width: 780px) {
-  .logo img {
-    height: 36px;
-  }
-}
     /* === HERO IMAGE ZOOM === */
 .art-card {
   overflow: hidden; /* hide edges while zooming */
@@ -374,18 +331,6 @@
     .section-title{display:inline-flex;align-items:center;gap:.5ch}
     .title-icon{height:1.25em;width:auto;margin-top:.05em;opacity:.92}
     @media (max-width:780px){ .title-icon{height:1.1em} }
-    /* ===== FINAL dark-mode header override (must be LAST) ===== */
-@media (prefers-color-scheme: dark) {
-  header,
-  header.scrolled {
-    background: linear-gradient(
-      180deg,
-      rgba(15,23,42,0.96),
-      rgba(15,23,42,0.92)
-    ) !important;
-    border-bottom-color: rgba(255,255,255,0.08);
-  }
-}
   </style>
 </head>
 <body>
@@ -397,21 +342,11 @@
     <div class="container">
       <nav>
         <a href="#home" class="logo" aria-label="Home">
-        <!-- Light mode logo -->
           <img
-            src="logo-light.png"
-            alt="The Nail Bar logo"
-            class="logo-light"
+            src="logo.png"
+            srcset="logo.png 1x, logo@2x.png 2x"
+            alt="The logo"
             fetchpriority="high"
-            loading="eager"
-            decoding="sync">
-
-        <!-- Dark mode logo -->
-          <img
-            src="logo-dark.png"
-            alt=""
-            class="logo-dark"
-            aria-hidden="true"
             loading="eager"
             decoding="sync">
         </a>
