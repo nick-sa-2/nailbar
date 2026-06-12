@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#C24A1D">
+  <meta name="color-scheme" content="light">
   <title>The NailBar | Luxury Nail and Beauty Salon in Gqeberha</title>
 
   <!-- Fonts -->
@@ -87,6 +88,7 @@
 
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
+    html{color-scheme:light}
     body{
       font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
       background:var(--bg); color:var(--text);
@@ -570,6 +572,25 @@
     a:focus,button:focus,input:focus{outline:3px solid rgba(194,74,29,0.28);outline-offset:3px}
     @media (prefers-reduced-motion:reduce){
       *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    }
+    @media (prefers-color-scheme:dark){
+      :root{
+        color-scheme:light;
+        --bg:#fff8f5;
+        --surface:#ffffff;
+        --muted:#6b7280;
+        --text:#0f172a;
+        --accent:#C24A1D;
+        --accent-2:#D64545;
+        --ink:#1B2433;
+        --home-text:#0f172a;
+        --home-muted:#6b7280;
+        --home-accent:#C24A1D;
+        --home-accent-2:#D64545;
+        --home-petal:#fff8f5;
+        --home-gold:#C24A1D;
+      }
+      body{background:var(--bg);color:var(--text)}
     }
 
     /* Tiny logo next to "Services & Pricing" */
