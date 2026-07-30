@@ -457,6 +457,92 @@
       line-height:1.42;
     }
 
+    /* Team */
+    #team{
+      background:linear-gradient(180deg,rgba(255,255,255,0.42),rgba(255,248,245,0.82));
+    }
+    .team-layout{
+      display:grid;
+      grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);
+      gap:34px;
+      align-items:center;
+      margin-top:28px;
+    }
+    .team-group{
+      border-radius:20px;
+      aspect-ratio:5/4;
+      overflow:hidden;
+      box-shadow:var(--shadow-2);
+      position:relative;
+      background:var(--surface);
+    }
+    .team-group::after{
+      content:"";
+      position:absolute;
+      inset:2px;
+      border:2px solid rgba(255,255,255,0.95);
+      border-radius:18px;
+      pointer-events:none;
+      z-index:2;
+    }
+    .team-group img{width:100%;height:100%;object-fit:cover;object-position:center 34%}
+    .team-caption{
+      position:absolute;
+      left:18px;
+      bottom:18px;
+      z-index:3;
+      display:inline-flex;
+      width:max-content;
+      max-width:calc(100% - 36px);
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.92);
+      color:var(--text);
+      font-weight:800;
+      box-shadow:var(--shadow-1);
+    }
+    .team-copy{
+      max-width:520px;
+    }
+    .team-copy .section-header{
+      text-align:left;
+      margin-bottom:0;
+    }
+    .team-copy .section-description{
+      margin-left:0;
+      margin-right:0;
+      color:#4f5c72;
+    }
+    .team-portraits{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(86px,1fr));
+      gap:14px;
+      margin-top:24px;
+      align-items:center;
+    }
+    .team-portrait{
+      width:100%;
+      max-width:132px;
+      aspect-ratio:1;
+      border-radius:50%;
+      border:2px solid rgba(255,255,255,0.96);
+      box-shadow:0 10px 28px rgba(15,23,42,0.08);
+      overflow:hidden;
+      background:var(--surface);
+    }
+    .team-portrait img{width:100%;height:100%;object-fit:cover;object-position:center 26%}
+    .team-member{
+      display:grid;
+      justify-items:center;
+      gap:10px;
+    }
+    .team-member-name{
+      color:var(--text);
+      font-size:.95rem;
+      font-weight:800;
+      line-height:1.2;
+    }
+
     /* Contact */
     .contact-layout{
       display:grid;
@@ -603,6 +689,11 @@
       .about-copy{max-width:100%}
       .about-copy .section-description,.about-copy p:not(.section-subtitle):not(.section-description){max-width:100%}
       .about-points{grid-template-columns:1fr}
+      .team-layout{grid-template-columns:1fr;gap:24px}
+      .team-copy{max-width:100%;text-align:center;margin:0 auto}
+      .team-copy .section-header{text-align:center}
+      .team-copy .section-description{margin-left:auto;margin-right:auto}
+      .team-portraits{grid-template-columns:repeat(4,minmax(64px,1fr));justify-items:center}
       .contact-layout{grid-template-columns:1fr;gap:28px}
       .contact-copy{text-align:center;margin:0 auto;transform:none}
       .contact-copy .section-description,.contact-note{margin-left:auto;margin-right:auto}
@@ -619,6 +710,8 @@
       .actions a{width:100%}
       .hero-meta span{width:100%;text-align:center}
       .art-card .label{left:14px;right:14px;bottom:14px;flex-direction:column;gap:2px}
+      .team-portraits{grid-template-columns:repeat(2,minmax(96px,1fr));max-width:310px;margin-left:auto;margin-right:auto}
+      .team-caption{left:14px;bottom:14px;max-width:calc(100% - 28px)}
       .footer-logo img{height:30px}
     }
 
@@ -676,6 +769,7 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#about">About</a></li>
+          <li><a href="#team">Team</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
 
@@ -692,6 +786,7 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#about">About</a></li>
+          <li><a href="#team">Team</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -920,6 +1015,51 @@
       </div>
     </section>
 
+    <!-- Team -->
+    <section id="team">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-subtitle">Meet The Team</p>
+          <h2 class="section-title">The Hands Behind the Polish</h2>
+          <p class="section-description">A warm, skilled team bringing steady care, soft detail, and a personal touch to every appointment.</p>
+        </div>
+
+        <div class="team-layout">
+          <figure class="team-group">
+            <img src="images/all_nail_techs_1.webp" width="1086" height="1448" alt="The NailBar team inside the Gqeberha salon" loading="lazy">
+            <figcaption class="team-caption">The Nail Bar Team</figcaption>
+          </figure>
+
+          <div class="team-copy">
+            <div class="section-header">
+              <p class="section-subtitle">Care In Every Detail</p>
+              <h3 class="section-title">Friendly Faces, Beautiful Work</h3>
+              <p class="section-description">Whether you are visiting for a fresh set, lashes, brows, or a little beauty reset, you will be welcomed by a team that takes pride in careful, polished work.</p>
+            </div>
+
+            <div class="team-portraits" aria-label="The NailBar team portraits">
+              <figure class="team-member">
+                <div class="team-portrait"><img src="images/nail_tech_1.webp" width="1086" height="1448" alt="Portrait of Sarie from The NailBar team" loading="lazy"></div>
+                <figcaption class="team-member-name">Sarie</figcaption>
+              </figure>
+              <figure class="team-member">
+                <div class="team-portrait"><img src="images/nail_tech_3.webp" width="1086" height="1448" alt="Portrait of Christelle from The NailBar team" loading="lazy"></div>
+                <figcaption class="team-member-name">Christelle</figcaption>
+              </figure>
+              <figure class="team-member">
+                <div class="team-portrait"><img src="images/nail_tech_4.webp" width="1086" height="1448" alt="Portrait of Nolli from The NailBar team" loading="lazy"></div>
+                <figcaption class="team-member-name">Nolli</figcaption>
+              </figure>
+              <figure class="team-member">
+                <div class="team-portrait"><img src="images/nail_tech_2.webp" width="1086" height="1448" alt="Portrait of Marggie from The NailBar team" loading="lazy"></div>
+                <figcaption class="team-member-name">Marggie</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Contact -->
     <section id="contact">
       <div class="container">
@@ -993,6 +1133,7 @@
           <p><a href="#services">Our Services</a></p>
           <p><a href="#gallery">Gallery</a></p>
           <p><a href="#about">About Us</a></p>
+          <p><a href="#team">Meet The Team</a></p>
           <p><a href="#contact">Book Now</a></p>
         </div>
 
