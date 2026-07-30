@@ -1181,13 +1181,18 @@
     // active nav link on scroll
     const sections = document.querySelectorAll('main section');
     const links = document.querySelectorAll('.nav-links a');
+    function setActiveLink(id){
+      links.forEach(l=>{l.classList.toggle('active', l.getAttribute('href') === `#${id}`)});
+    }
     function onScroll(){
       let cur = '';
       sections.forEach(s=>{
         const top = s.offsetTop - (header.offsetHeight + 20);
         if(window.scrollY>=top) cur = s.id
       });
-      links.forEach(l=>{l.classList.toggle('active', l.getAttribute('href') === `#${cur}`)});
+      const atPageBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      if(atPageBottom && sections.length) cur = sections[sections.length - 1].id;
+      setActiveLink(cur);
     }
     window.addEventListener('scroll', onScroll);
     onScroll();
@@ -1202,6 +1207,7 @@
           if(target){
             const headerH = header.offsetHeight || 72;
             const y = target.getBoundingClientRect().top + window.pageYOffset - (headerH + 8);
+            setActiveLink(target.id);
             window.scrollTo({top:y,behavior:'smooth'});
           }
           // close mobile drawer after navigation
